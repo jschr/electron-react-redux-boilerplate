@@ -9,7 +9,8 @@
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.0-rc1",
     "react-redux": "^2.1.2",
-    "redux": "^3.0.0"
+    "redux": "^3.0.0",
+    "redux-actions": "^0.8.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -19,7 +20,8 @@
     "electron-prebuilt": "^0.32.2",
     "eslint": "^1.4.1",
     "eslint-config-airbnb": "0.0.8",
-    "eslint-plugin-react": "^3.3.2"
+    "eslint-plugin-react": "^3.3.2",
+    "redux-devtools": "^2.1.2"
   },
   "scripts": {
     "start": "node node_modules/babel/bin/babel-node.js scripts/serve.js"

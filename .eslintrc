@@ -13,7 +13,8 @@
     "func-names": [ 0 ],
     "comma-dangle": [ 0 ],
     "no-unused-expressions" : [ 0 ], // until fixed https://github.com/babel/babel-eslint/issues/158
-    "block-scoped-var": [ 0 ] // until fixed https://github.com/eslint/eslint/issues/2253
+    "block-scoped-var": [ 0 ], // until fixed https://github.com/eslint/eslint/issues/2253
+    "react/prop-types": [ 0 ]
   },
   "env": {
     "es6": true,
