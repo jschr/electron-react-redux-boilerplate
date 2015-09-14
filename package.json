@@ -1,10 +1,11 @@
 {
-  "name": "signage-player",
+  "name": "electron-redux-react-boilerplate",
   "version": "0.0.0",
-  "description": "signage-player",
+  "description": "electron-redux-react-boilerplate",
   "main": "init.js",
-  "author": "",
-  "license": "ISC",
+  "author": "Jordan Schroter",
+  "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
+  "license": "MIT",
   "dependencies": {
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.0-rc1",
