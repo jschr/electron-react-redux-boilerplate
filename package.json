@@ -1,0 +1,27 @@
+{
+  "name": "signage-player",
+  "version": "0.0.0",
+  "description": "signage-player",
+  "main": "init.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.14.0-rc1",
+    "react-dom": "^0.14.0-rc1",
+    "react-redux": "^2.1.2",
+    "redux": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.1",
+    "browser-sync": "^2.9.3",
+    "electron-compile": "^0.9.2",
+    "electron-prebuilt": "^0.32.2",
+    "eslint": "^1.4.1",
+    "eslint-config-airbnb": "0.0.8",
+    "eslint-plugin-react": "^3.3.2"
+  },
+  "scripts": {
+    "start": "node node_modules/babel/bin/babel-node.js scripts/serve.js"
+  }
+}
