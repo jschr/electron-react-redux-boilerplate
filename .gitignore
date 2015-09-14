@@ -3,6 +3,7 @@ node_modules
 dist
 lib
 build
+cache
 .DS_Store
 *.log
 build.js
