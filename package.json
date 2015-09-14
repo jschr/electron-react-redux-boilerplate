@@ -1,7 +1,7 @@
 {
-  "name": "electron-redux-react-boilerplate",
+  "name": "electron-react-redux-boilerplate",
   "version": "0.0.0",
-  "description": "electron-redux-react-boilerplate",
+  "description": "electron-react-redux-boilerplate",
   "main": "init.js",
   "author": "Jordan Schroter",
   "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
