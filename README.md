@@ -1,4 +1,4 @@
-# electron-react-redux-boilerplate (WIP)
+# electron-react-redux-boilerplate
 Boilerplate app for Electron with Redux
 
 - electron-compile for ES6/ES7 via babel
