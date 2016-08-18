@@ -1,8 +1,4 @@
-import app from 'app';
-import BrowserWindow from 'browser-window';
-import crashReporter from 'crash-reporter';
-
-crashReporter.start();
+import { app, BrowserWindow } from 'electron';
 
 let mainWindow = null;
 
@@ -17,7 +13,7 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({ width: 1200, height: 1000 });
 
-  mainWindow.loadUrl(`file://${__dirname}/client/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/client/index.html`);
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.openDevTools();

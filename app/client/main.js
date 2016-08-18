@@ -11,17 +11,25 @@ const appCreateStore = isDevelopment ? compose(devTools())(createStore) : create
 const store = appCreateStore(combineReducers({ user }));
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
 
+let DebugTools = null;
+
+// if (process.env.NODE_ENV === 'development') {
+//   const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
+
+//   DebugTools = (
+//     <DebugPanel top right bottom>
+//       <DevTools store={store} monitor={LogMonitor} />
+//     </DebugPanel>
+//   );
+// }
+
+
 ReactDOM.render(
   <div>
     <Provider store={store}>
       <App />
     </Provider>
-    { isDevelopment && do {
-      const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
-      <DebugPanel top right bottom>
-        <DevTools store={store} monitor={LogMonitor} />
-      </DebugPanel>;
-    } }
+    { DebugTools }
   </div>,
   rootElement
 );
