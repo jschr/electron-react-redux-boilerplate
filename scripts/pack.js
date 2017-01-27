@@ -29,7 +29,7 @@ packager({
   name: packageJson.name,
   platform: 'darwin',
   arch: 'x64',
-  version: require('electron-prebuilt/package.json').version,
+  version: require('electron/package.json').version,
   overwrite: true,
   prune: true,
   ignore: new RegExp(`node_modules/(${nodeModuleIgnores.join('|')})`),

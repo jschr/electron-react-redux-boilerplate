@@ -1,5 +1,5 @@
 import { spawn } from 'child_process';
-import electron from 'electron-prebuilt';
+import electron from 'electron';
 import browserSync from 'browser-sync';
 import browserSyncConnectUtils from 'browser-sync/lib/connect-utils';
 
@@ -31,7 +31,7 @@ bsync.init({
 }, (err, bs) => {
   if (err) return console.error(err);
 
-  spawn(electron, ['.'], {
+  const proc = spawn(electron, ['.'], {
     env: {
       ...{
         NODE_ENV: 'development',
@@ -40,6 +40,10 @@ bsync.init({
       ...process.env
     },
     stdio: 'inherit'
+  });
+
+  proc.on('close', (code) => {
+    process.exit();
   });
 
   bsync
