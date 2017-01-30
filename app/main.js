@@ -2,8 +2,24 @@ import {app, crashReporter, BrowserWindow, Menu} from 'electron';
 import path from 'path';
 import url from 'url';
 
+const isDevelopment = (process.env.NODE_ENV === 'development');
+
 let mainWindow = null;
 let forceQuit = false;
+
+const installExtensions = async () => {
+  const installer = require('electron-devtools-installer');
+  const extensions = [
+    'REACT_DEVELOPER_TOOLS',
+    'REDUX_DEVTOOLS'
+  ];
+  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+  for (const name of extensions) {
+    try {
+      await installer.default(installer[name], forceDownload);
+    } catch (e) {}
+  }
+};
 
 crashReporter.start({
   productName: 'YourName',
@@ -20,7 +36,11 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('ready', () => {
+app.on('ready', async () => {
+  if (isDevelopment) {
+    await installExtensions();
+  }
+
   mainWindow = new BrowserWindow({ 
     width: 1000, 
     height: 800,
@@ -28,6 +48,7 @@ app.on('ready', () => {
     minHeight: 480,
     show: false 
   });
+
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'client/index.html'),
     protocol: 'file:',
@@ -64,7 +85,7 @@ app.on('ready', () => {
     }
   });
 
-  if (process.env.NODE_ENV === 'development') {
+  if (isDevelopment) {
     // auto-open dev tools
     mainWindow.webContents.openDevTools();
 
