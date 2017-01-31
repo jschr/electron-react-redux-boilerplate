@@ -31,7 +31,7 @@ bsync.init({
 }, (err, bs) => {
   if (err) return console.error(err);
 
-  const proc = spawn(electron, ['.'], {
+  const child = spawn(electron, ['.'], {
     env: {
       ...{
         NODE_ENV: 'development',
@@ -42,7 +42,7 @@ bsync.init({
     stdio: 'inherit'
   });
 
-  proc.on('close', (code) => {
+  child.on('close', () => {
     process.exit();
   });
 
