@@ -17,7 +17,9 @@ const installExtensions = async () => {
   for (const name of extensions) {
     try {
       await installer.default(installer[name], forceDownload);
-    } catch (e) {}
+    } catch (e) {
+      console.log(`Error installing ${name} extension: ${e.message}`);
+    }
   }
 };
 
