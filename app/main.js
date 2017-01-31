@@ -1,6 +1,6 @@
-import {app, crashReporter, BrowserWindow, Menu} from 'electron';
 import path from 'path';
 import url from 'url';
+import {app, crashReporter, BrowserWindow, Menu} from 'electron';
 
 const isDevelopment = (process.env.NODE_ENV === 'development');
 
