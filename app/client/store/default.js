@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import user from '../reducers/user';
@@ -27,4 +27,4 @@ const rootReducer = combineReducers(reducers);
 
 export default function configureStore(initialState) {
   return createStore(rootReducer, initialState, enhancer);
-};
+}
