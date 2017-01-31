@@ -38,6 +38,6 @@
     "serve": "babel-node scripts/serve.js",
     "pack": "babel-node scripts/pack.js",
     "test": "mocha -R spec --compilers js:babel-core/register",
-    "lint": "eslint --format=stylish app test *.js"
+    "lint": "eslint --no-ignore app test *.js"
   }
 }
