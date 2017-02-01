@@ -5,7 +5,7 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => { // eslint-disable-line no-unused-vars
   return {};
 };
 
