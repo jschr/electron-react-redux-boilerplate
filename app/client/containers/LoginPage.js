@@ -9,7 +9,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   const user = bindActionCreators(userActions, dispatch);
-  console.log('userActions:', user.login);
   return {
     onLogin: user.login
   };
