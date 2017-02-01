@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class App extends React.Component {
+export default class Login extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired
+  };
+
   handleLogin() {
     const { onLogin } = this.props;
     const username = this.refs.username.value;
 
     onLogin({ username, loggedIn: true });
+
+    this.props.router.push('/loggedin');
   }
 
   render() {
