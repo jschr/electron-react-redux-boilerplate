@@ -1,41 +1,92 @@
 import fs from 'fs';
 import path from 'path';
+import rimraf from 'rimraf';
 import packager from 'electron-packager';
-// elctron-compile api not setup for es6 modules, need to use require;
-const compiler = require('electron-compile');
+import { createCompilerHostFromProjectRoot as createCompiler } from 'electron-compile';
 
-const paths = {
-  packageJson: path.join(__dirname, '../package.json'),
-  cache: path.join(__dirname, '../cache')
-};
+const rootDir = path.resolve(__dirname, '../');
+const cacheDir = path.join(rootDir, '.cache');
+const appDir = path.join(rootDir, 'app');
+const packagePath = path.join(rootDir, 'package.json');
+const mainJSPath = path.join(rootDir, 'main.js');
 
-const packageJson = JSON.parse(fs.readFileSync(paths.packageJson, 'utf8'));
-const nodeModuleIgnores = [
-  'electron-compile/node_modules/electron-compilers',
-  // devDependencies are ignored by default but explicity ignoring them
-  // seems to speed up packaging
-  ...Object.keys(packageJson.devDependencies),
-];
+const appPackage = require(packagePath);
 
-compiler.init(paths.cache);
-compiler.compileAll('app');
-fs.writeFileSync(
-  path.join(paths.cache, 'settings.json'),
-  JSON.stringify(compiler.collectCompilerInformation())
-);
+function getFiles(dir) {
+  let files = [];
+  fs.readdirSync(dir).forEach((name) => {
+    const fp = path.join(dir, name);
+    const stat = fs.statSync(fp);
 
-packager({
-  dir: '.',
-  name: packageJson.name,
-  platform: 'darwin',
-  arch: 'x64',
-  version: require('electron/package.json').version,
-  overwrite: true,
-  prune: true,
-  ignore: new RegExp(`node_modules/(${nodeModuleIgnores.join('|')})`),
-  // asar: true,
-  out: 'dist'
-}, (err, appPath) => {
-  if (err) return console.error(err);
-  console.log(appPath);
-});
+    // ignore dot files
+    if(name.startsWith('.')) {
+      return;
+    }
+
+    if(stat.isDirectory()) {
+      const children = getFiles(fp);
+      files.push(...children);
+    } else {
+      files.push(fp);
+    }
+  });
+  return files;
+}
+
+async function main() {
+  let source = [packagePath, mainJSPath, ...getFiles(appDir)];
+
+  if(!fs.existsSync(cacheDir)) {
+    fs.mkdirSync(cacheDir);
+  }
+
+  let compilerHost;
+
+  try {
+    compilerHost = await createCompiler(rootDir, cacheDir);
+  } catch(e) {
+    console.log(`Couldn't set up compilers: ${e.message}`);
+    throw e;
+  }
+  
+  await Promise.all(source.map(async (f) => {
+    try {
+      console.log(`Compile ${f}`);
+      await compilerHost.compile(f);
+    } catch (e) {
+      console.error(`Failed to compile file: ${f}`);
+      console.error(e.message);
+    }
+  }));
+
+  const options = {
+    dir: rootDir,
+    name: appPackage.name,
+    platform: [
+      'darwin', // macOS: outside of AppStore distribution
+      //'mas', // macOS: AppStore distribution
+      //'win32', 
+      //'linux'
+    ],
+    arch: [ 'x64' ],
+    overwrite: true,
+    prune: true,
+    asar: true,
+    out: 'dist',
+    ignore: [
+      'scripts', 'test', 'dist', 'README.md',
+      '.git', '.gitignore', 
+      '.babelrc', '.eslintignore', '.eslintrc'
+    ]
+  };
+
+  packager(options, (err, appPath) => {
+    if (err) return console.error(err);
+    console.log(appPath);
+
+    // erase cache so it does not bother us during development.
+    rimraf.sync(cacheDir);
+  });
+}
+
+main();

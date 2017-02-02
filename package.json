@@ -7,6 +7,7 @@
   "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
   "license": "MIT",
   "dependencies": {
+    "babel-runtime": "^6.22.0",
     "electron-compile": "^5.1.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -35,7 +36,8 @@
     "electron-packager": "^8.5.1",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "rimraf": "^2.5.4"
   },
   "scripts": {
     "serve": "babel-node scripts/serve.js",
