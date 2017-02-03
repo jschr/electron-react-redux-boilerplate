@@ -47,6 +47,6 @@ bsync.init({
   });
 
   bsync
-    .watch('.cache/**/*')
+    .watch('build/**/*')
     .on('change', bsync.reload);
 });
