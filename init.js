@@ -1,1 +1,1 @@
-require('electron-compile').init(__dirname, './app/main');
+require('electron-compile').init(__dirname, './main');

@@ -8,3 +8,4 @@ cache
 *.log
 build.js
 _old_
+.cache
