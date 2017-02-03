@@ -2,10 +2,10 @@ appId: com.example.app
 copyright: Example co
 productName: MyApp
 
-asar: false
+asar: true
 
 directories:
-  buildResources: .build/
+  buildResources: build-assets/
   output: dist/
 
 files:
