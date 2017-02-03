@@ -4,6 +4,10 @@ productName: MyApp
 
 asar: false
 
+directories:
+  buildResources: .build/
+  output: dist/
+
 files:
   - package.json
   - init.js
