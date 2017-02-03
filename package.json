@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "description": "electron-react-redux-boilerplate",
   "main": "init.js",
-  "author": "Jordan Schroter",
+  "author": {
+    "name": "Jordan Schroter",
+    "email": "email@author.com"
+  },
   "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.22.0",
-    "electron-compile": "^5.1.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
@@ -31,18 +33,30 @@
     "browser-sync": "^2.9.3",
     "chai": "^3.4.1",
     "electron": "^1.5.0",
-    "electron-compilers": "^5.1.3",
+    "electron-builder": "^12.3.1",
     "electron-devtools-installer": "^2.1.0",
-    "electron-packager": "^8.5.1",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0",
     "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.1",
     "rimraf": "^2.5.4"
   },
   "scripts": {
-    "serve": "babel-node scripts/serve.js",
-    "pack": "babel-node scripts/pack.js",
+    "postinstall": "install-app-deps",
+    "serve": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
     "test": "mocha -R spec --compilers js:babel-core/register",
-    "lint": "eslint --no-ignore scripts app test *.js"
+    "lint": "eslint --no-ignore scripts app test *.js",
+    "pack": "run-s private:clean private:compile private:build:all",
+    "pack:mac": "run-s private:clean private:compile private:build:mac",
+    "pack:win": "run-s private:clean private:compile private:build:win",
+    "pack:linux": "run-s private:clean private:compile private:build:linux",
+    "private:build:all": "build -mwl",
+    "private:build:mac": "build --mac",
+    "private:build:win": "build --win",
+    "private:build:linux": "build --linux",
+    "private:watch": "npm run private:compile -- --source-maps true --watch --skip-initial-build",
+    "private:serve": "babel-node scripts/serve.js",
+    "private:compile": "babel app/ --copy-files --out-dir build",
+    "private:clean": "rimraf build"
   }
 }

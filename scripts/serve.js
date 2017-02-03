@@ -47,6 +47,6 @@ bsync.init({
   });
 
   bsync
-    .watch('app/**/*')
+    .watch('build/**/*')
     .on('change', bsync.reload);
 });
