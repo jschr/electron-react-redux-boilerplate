@@ -43,7 +43,7 @@
   },
   "scripts": {
     "postinstall": "install-app-deps",
-    "serve": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
+    "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
     "test": "mocha -R spec --compilers js:babel-core/register",
     "lint": "eslint --no-ignore scripts app test *.js",
     "pack": "run-s private:clean private:compile private:build:all",

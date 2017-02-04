@@ -1,6 +1,6 @@
 # electron-react-redux-boilerplate
 
-Minimal boilerplate to get started with [Electron](http://electron.atom.io/), [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/).
+A minimal boilerplate to get started with [Electron](http://electron.atom.io/), [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/).
 
 What's included:
 
@@ -11,6 +11,7 @@ What's included:
 * [Electron Packager](https://github.com/electron-userland/electron-packager)
 * [Electron DevTools Installer](https://github.com/bradstewart/electron-devtools-installer)
 * [Mocha](https://mochajs.org/)
+* [Browsersync](https://browsersync.io/)
 
 ## Quick start
 
@@ -27,12 +28,12 @@ npm install
 
 Development
 ```bash
-npm run serve
+npm run develop
 ```
 
 ## DevTools
 
-Open / close devtools:
+Toggle DevTools:
 
 * OSX: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 * Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
@@ -40,23 +41,24 @@ Open / close devtools:
 
 ## Packaging
 
-Modify [electron-builder.yml](./electron-builder.yml) to edit package info. For a full list of options see: https://github.com/electron-userland/electron-builder/wiki/Options.
+Modify [electron-builder.yml](./electron-builder.yml) to edit package info.
+
+For a full list of options see: https://github.com/electron-userland/electron-builder/wiki/Options.
 
 Create a package for OSX, Windows and Linux
 ```
 npm run pack
 ```
 
-Or only for a specific platform
+Or target a specific platform
 ```
 npm run pack:mac
 npm run pack:win
 npm run pack:linux
 ```
 
-## Testing
+## Tests
 
-Run tests
 ```
 npm run test
 ```
