@@ -5,6 +5,7 @@ import {app, crashReporter, BrowserWindow, Menu} from 'electron';
 const isDevelopment = (process.env.NODE_ENV === 'development');
 
 let mainWindow = null;
+let showedWindow = false;
 let forceQuit = false;
 
 const installExtensions = async () => {
@@ -58,8 +59,11 @@ app.on('ready', async () => {
   }));
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.show();
-    mainWindow.focus();
+    // show window once on first load
+    if(!showedWindow) {
+      mainWindow.show();
+      showedWindow = true;
+    }
 
     // Handle window logic properly on macOS:
     // 1. App should not terminate if window has been closed
