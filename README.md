@@ -2,7 +2,7 @@
 
 A minimal boilerplate to get started with [Electron](http://electron.atom.io/), [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/).
 
-What's included:
+Including:
 
 * [React Router](https://reacttraining.com/react-router/)
 * [Redux Thunk](https://github.com/gaearon/redux-thunk/)
