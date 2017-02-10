@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
+import actions from '../actions/user';
 
 export default handleActions({
-  USER_LOGIN: (state, action) => {
+  [actions.login]: (state, action) => {
     return { ...state, ...action.payload };
   }
 }, {});
