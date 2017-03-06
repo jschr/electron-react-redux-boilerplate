@@ -1,20 +1,30 @@
 import { expect } from 'chai';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import actions from '../../app/actions/user';
+
+const mockStore = configureMockStore([ thunk ]);
 
 describe('actions', () => {
 
   describe('user', () => {
     
     it('should log in', () => {
-      const action = { 
-        type: 'USER_LOGIN', 
-        payload: { 
-          username: 'John Doe', 
-          loggedIn: true 
+      const store = mockStore({});
+      const expectedActions = [{
+        type: 'USER_LOGIN',
+        payload: {
+          username: 'John Doe',
+          loggedIn: true
         }
-      };
-      const payload = Object.assign({}, action.payload);
-      expect(actions.login(payload)).to.deep.equal(action);
+      }];
+
+      store.dispatch(actions.login({
+        username: 'John Doe',
+        loggedIn: true
+      }));
+
+      expect(store.getActions()).deep.equal(expectedActions);
     });
 
   });
