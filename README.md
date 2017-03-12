@@ -9,7 +9,7 @@ Including:
 * [Redux Actions](https://github.com/acdlite/redux-actions/)
 * [Redux Local Storage](https://github.com/elgerlambert/redux-localstorage/)
 * [Electron Packager](https://github.com/electron-userland/electron-packager)
-* [Electron DevTools Installer](https://github.com/bradstewart/electron-devtools-installer)
+* [Electron DevTools Installer](https://github.com/MarshallOfSound/electron-devtools-installer)
 * [Mocha](https://mochajs.org/)
 * [Browsersync](https://browsersync.io/)
 
