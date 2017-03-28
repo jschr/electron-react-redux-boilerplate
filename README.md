@@ -17,7 +17,7 @@ Including:
 
 Clone the repository
 ```bash
-git clone git@github.com:jschr/electron-react-redux-boilerplate.git
+git clone --depth=1 git@github.com:jschr/electron-react-redux-boilerplate.git
 ```
 
 Install dependencies
