@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import Login from '../components/Login';
 import userActions from '../actions/user';
@@ -10,7 +11,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   const user = bindActionCreators(userActions, dispatch);
   return {
-    onLogin: user.login
+    onLogin: (data) => {
+      user.login(data);
+      dispatch(push('/loggedin'));
+    }
   };
 };
 
