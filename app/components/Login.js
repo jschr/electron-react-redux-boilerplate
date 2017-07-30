@@ -1,25 +1,26 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Login extends Component {
   static propTypes = {
     onLogin: PropTypes.func.isRequired
   };
 
-  handleLogin() {
-    const { onLogin } = this.props;
-    const username = this.refs.username.value;
+  _inputRef: null;
 
-    onLogin({ username, loggedIn: true });
-
-    this.props.router.push('/loggedin');
+  handleLogin = () => {
+    this.props.onLogin({
+      username: this._inputRef.value,
+      loggedIn: true
+    });
   }
 
   render() {
     return (
       <div>
         <h2>Login</h2>
-        <input ref="username" type="text" />
-        <button onClick={::this.handleLogin}>Log In</button>
+        <input ref={(ref) => { this._inputRef = ref; }} type="text" />
+        <button onClick={this.handleLogin}>Log In</button>
       </div>
     );
   }
