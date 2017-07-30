@@ -5,7 +5,7 @@ productName: MyApp
 asar: true
 
 directories:
-  buildResources: build-assets/
+  buildResources: dist-assets/
   output: dist/
 
 files:
