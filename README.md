@@ -1,4 +1,7 @@
 # electron-react-redux-boilerplate
+[![Build Status](https://api.travis-ci.org/jschr/electron-react-redux-boilerplate.svg)](https://travis-ci.org/pronebird/NSEventMonitor)
+[![dependencies Status](https://david-dm.org/jschr/electron-react-redux-boilerplate/status.svg)](https://david-dm.org/pronebird/NSEventMonitor)
+[![devDependencies Status](https://david-dm.org/jschr/electron-react-redux-boilerplate/dev-status.svg)](https://david-dm.org/pronebird/NSEventMonitor?type=dev)
 
 A minimal boilerplate to get started with [Electron](http://electron.atom.io/), [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/).
 
