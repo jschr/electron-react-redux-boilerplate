@@ -6,12 +6,20 @@ export default class Login extends Component {
     onLogin: PropTypes.func.isRequired
   };
 
-  _inputRef: null;
+  state = {
+    username: ''
+  };
 
   handleLogin = () => {
     this.props.onLogin({
-      username: this._inputRef.value,
+      username: this.state.username,
       loggedIn: true
+    });
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      username: e.target.value
     });
   }
 
@@ -19,7 +27,7 @@ export default class Login extends Component {
     return (
       <div>
         <h2>Login</h2>
-        <input ref={(ref) => { this._inputRef = ref; }} type="text" />
+        <input onChange={this.handleChange} type="text" value={this.state.username} />
         <button onClick={this.handleLogin}>Log In</button>
       </div>
     );
