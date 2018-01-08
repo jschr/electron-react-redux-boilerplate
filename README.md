@@ -70,3 +70,7 @@ npm run test
 
 - [@jschr](https://github.com/jschr)
 - [@pronebird](https://github.com/pronebird)
+
+## Apps using this boilerplate
+
+- [Mullvad VPN app](https://github.com/mullvad/mullvadvpn-app)
