@@ -74,3 +74,4 @@ npm run test
 ## Apps using this boilerplate
 
 - [Mullvad VPN app](https://github.com/mullvad/mullvadvpn-app)
+- [YouTube Downloader Electron](https://github.com/vanzylv/youtube-downloader-electron)
