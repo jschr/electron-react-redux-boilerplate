@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class LoggedIn extends Component {
   static propTypes = {
@@ -8,11 +8,10 @@ export default class LoggedIn extends Component {
 
   handleLogout = () => {
     this.props.onLogout({
-      username: '',
+      username: "",
       loggedIn: false
     });
-  }
-
+  };
 
   render() {
     return (
