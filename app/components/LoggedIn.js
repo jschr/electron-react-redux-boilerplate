@@ -8,7 +8,7 @@ export default class LoggedIn extends Component {
 
   handleLogout = () => {
     this.props.onLogout({
-      username: "",
+      username: '',
       loggedIn: false
     });
   };
