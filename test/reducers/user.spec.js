@@ -17,6 +17,18 @@ describe('reducers', () => {
       expect(reducer({}, action)).to.deep.equal(test);
     });
     
+    it('should handle USER_LOGOUT', () => {
+      const action = { 
+        type: 'USER_LOGOUT',
+        payload: {
+          username: '', 
+          loggedIn: false 
+        }
+      };
+      const test = Object.assign({}, action.payload);
+      expect(reducer({}, action)).to.deep.equal(test);
+    });
+    
   });
 
 });

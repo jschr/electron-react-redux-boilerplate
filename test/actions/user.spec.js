@@ -27,5 +27,23 @@ describe('actions', () => {
       expect(store.getActions()).deep.equal(expectedActions);
     });
 
+    it('should logout', () => {
+      const store = mockStore({});
+      const expectedActions = [{
+        type: 'USER_LOGOUT',
+        payload: {
+          username: '',
+          loggedIn: false
+        }
+      }];
+
+      store.dispatch(actions.logout({
+        username: '',
+        loggedIn: false
+      }));
+
+      expect(store.getActions()).deep.equal(expectedActions);
+    });
+
   });
 });
