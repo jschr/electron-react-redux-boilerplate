@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 export default class LoggedIn extends Component {
   static propTypes = {
-    onLogout: PropTypes.func.isRequired
+    onLogout: PropTypes.func.isRequired,
   };
 
   handleLogout = () => {
     this.props.onLogout({
       username: '',
-      loggedIn: false
+      loggedIn: false,
     });
   };
 

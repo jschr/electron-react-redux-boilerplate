@@ -8,7 +8,7 @@ import configureStore from './store';
 
 const syncHistoryWithStore = (store, history) => {
   const { routing } = store.getState();
-  if(routing && routing.location) {
+  if (routing && routing.location) {
     history.replace(routing.location);
   }
 };
@@ -22,9 +22,7 @@ const rootElement = document.querySelector(document.currentScript.getAttribute('
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={routerHistory}>
-      {routes}
-    </ConnectedRouter>
+    <ConnectedRouter history={routerHistory}>{routes}</ConnectedRouter>
   </Provider>,
-  rootElement
+  rootElement,
 );

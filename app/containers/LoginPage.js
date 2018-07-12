@@ -14,8 +14,11 @@ const mapDispatchToProps = (dispatch) => {
     onLogin: (data) => {
       user.login(data);
       dispatch(push('/loggedin'));
-    }
+    },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);

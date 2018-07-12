@@ -11,19 +11,19 @@ export default function configureStore(initialState, routerHistory) {
 
   const actionCreators = {
     ...userActions,
-    push
+    push,
   };
 
   const reducers = {
     user,
-    routing
+    routing,
   };
 
-  const middlewares = [ thunk, router ];
+  const middlewares = [thunk, router];
 
   const composeEnhancers = (() => {
     const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-    if(process.env.NODE_ENV === 'development' && compose_) {
+    if (process.env.NODE_ENV === 'development' && compose_) {
       return compose_({ actionCreators });
     }
     return compose;

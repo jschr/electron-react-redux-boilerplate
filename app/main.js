@@ -1,18 +1,15 @@
 import path from 'path';
 import url from 'url';
-import {app, crashReporter, BrowserWindow, Menu} from 'electron';
+import { app, crashReporter, BrowserWindow, Menu } from 'electron';
 
-const isDevelopment = (process.env.NODE_ENV === 'development');
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 let mainWindow = null;
 let forceQuit = false;
 
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer');
-  const extensions = [
-    'REACT_DEVELOPER_TOOLS',
-    'REDUX_DEVTOOLS'
-  ];
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   for (const name of extensions) {
     try {
@@ -27,7 +24,7 @@ crashReporter.start({
   productName: 'YourName',
   companyName: 'YourCompany',
   submitURL: 'https://your-domain.com/url-to-submit',
-  uploadToServer: false
+  uploadToServer: false,
 });
 
 app.on('window-all-closed', () => {
@@ -43,19 +40,21 @@ app.on('ready', async () => {
     await installExtensions();
   }
 
-  mainWindow = new BrowserWindow({ 
-    width: 1000, 
+  mainWindow = new BrowserWindow({
+    width: 1000,
     height: 800,
     minWidth: 640,
     minHeight: 480,
-    show: false 
+    show: false,
   });
 
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+  mainWindow.loadURL(
+    url.format({
+      pathname: path.join(__dirname, 'index.html'),
+      protocol: 'file:',
+      slashes: true,
+    }),
+  );
 
   // show window once on first load
   mainWindow.webContents.once('did-finish-load', () => {
@@ -68,7 +67,7 @@ app.on('ready', async () => {
     // 2. Click on icon in dock should re-open the window
     // 3. ⌘+Q should close the window and quit the app
     if (process.platform === 'darwin') {
-      mainWindow.on('close', function (e) {
+      mainWindow.on('close', function(e) {
         if (!forceQuit) {
           e.preventDefault();
           mainWindow.hide();
@@ -78,7 +77,7 @@ app.on('ready', async () => {
       app.on('activate', () => {
         mainWindow.show();
       });
-      
+
       app.on('before-quit', () => {
         forceQuit = true;
       });
@@ -95,12 +94,14 @@ app.on('ready', async () => {
 
     // add inspect element on right click menu
     mainWindow.webContents.on('context-menu', (e, props) => {
-      Menu.buildFromTemplate([{
-        label: 'Inspect element',
-        click() {
-          mainWindow.inspectElement(props.x, props.y);
-        }
-      }]).popup(mainWindow);
+      Menu.buildFromTemplate([
+        {
+          label: 'Inspect element',
+          click() {
+            mainWindow.inspectElement(props.x, props.y);
+          },
+        },
+      ]).popup(mainWindow);
     });
   }
 });
