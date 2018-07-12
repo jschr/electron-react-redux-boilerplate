@@ -12,5 +12,6 @@ install:
   - npm install
 
 script:
+  - npm run check-format
   - npm run lint
   - npm test
