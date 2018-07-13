@@ -3,25 +3,25 @@ import PropTypes from 'prop-types';
 
 export default class Login extends Component {
   static propTypes = {
-    onLogin: PropTypes.func.isRequired
+    onLogin: PropTypes.func.isRequired,
   };
 
   state = {
-    username: ''
+    username: '',
   };
 
   handleLogin = () => {
     this.props.onLogin({
       username: this.state.username,
-      loggedIn: true
+      loggedIn: true,
     });
-  }
+  };
 
   handleChange = (e) => {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
     });
-  }
+  };
 
   render() {
     return (
