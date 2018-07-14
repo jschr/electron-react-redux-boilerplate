@@ -39,7 +39,7 @@
     "electron-builder": "^20.0.7",
     "electron-devtools-installer": "^2.1.0",
     "electron-mocha": "^6.0.1",
-    "eslint": "^4.3.0",
+    "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^7.1.0",
     "npm-run-all": "^4.0.1",
