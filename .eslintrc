@@ -23,6 +23,12 @@
     "block-scoped-var": "error",
     "react/prop-types": "off"
   },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.2"
+    }
+  },
   "env": {
     "es6": true,
     "node": true,
