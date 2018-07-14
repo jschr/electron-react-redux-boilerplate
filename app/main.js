@@ -1,5 +1,4 @@
 import path from 'path';
-import url from 'url';
 import { app, crashReporter, BrowserWindow, Menu } from 'electron';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -48,13 +47,7 @@ app.on('ready', async () => {
     show: false,
   });
 
-  mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, 'index.html'),
-      protocol: 'file:',
-      slashes: true,
-    }),
-  );
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // show window once on first load
   mainWindow.webContents.once('did-finish-load', () => {
