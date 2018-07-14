@@ -12,7 +12,6 @@
   "dependencies": {
     "babel-runtime": "^6.22.0",
     "history": "^4.6.3",
-    "prettier": "1.13.7",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -43,6 +42,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^7.1.0",
     "npm-run-all": "^4.0.1",
+    "prettier": "^1.13.7",
     "redux-mock-store": "^1.2.2",
     "rimraf": "^2.5.4"
   },
