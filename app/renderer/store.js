@@ -15,6 +15,7 @@ export default function configureStore(initialState, routerHistory) {
   };
 
   const reducers = {
+    router: connectRouter(routerHistory),
     user,
   };
 
@@ -30,7 +31,6 @@ export default function configureStore(initialState, routerHistory) {
 
   const enhancer = composeEnhancers(applyMiddleware(...middlewares), persistState());
   const rootReducer = combineReducers(reducers);
-  const rootReducerWithRouter = connectRouter(routerHistory)(rootReducer);
 
-  return createStore(rootReducerWithRouter, initialState, enhancer);
+  return createStore(rootReducer, initialState, enhancer);
 }
