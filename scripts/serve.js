@@ -15,6 +15,27 @@ const getClientUrl = (options) => {
   return getRootUrl(options) + pathname;
 };
 
+function runElectron(browserSyncUrl) {
+  const child = spawn(electron, ['.', '--enable-logging'], {
+    env: {
+      ...{
+        NODE_ENV: 'development',
+        BROWSER_SYNC_CLIENT_URL: browserSyncUrl,
+      },
+      ...process.env,
+    },
+    stdio: 'inherit',
+  });
+
+  child.on('close', onCloseElectron);
+
+  return child;
+}
+
+function onCloseElectron() {
+  process.exit();
+}
+
 bsync.init(
   {
     ui: false,
@@ -33,21 +54,17 @@ bsync.init(
   (err, bs) => {
     if (err) return console.error(err);
 
-    const child = spawn(electron, ['.', '--enable-logging'], {
-      env: {
-        ...{
-          NODE_ENV: 'development',
-          BROWSER_SYNC_CLIENT_URL: getClientUrl(bs.options),
-        },
-        ...process.env,
-      },
-      stdio: 'inherit',
+    const browserSyncUrl = getClientUrl(bs.options);
+
+    let child = runElectron(browserSyncUrl);
+
+    bsync.watch('build/main/**/*').on('change', () => {
+      child.removeListener('close', onCloseElectron);
+      child.kill();
+
+      child = runElectron(browserSyncUrl);
     });
 
-    child.on('close', () => {
-      process.exit();
-    });
-
-    bsync.watch('build/**/*').on('change', bsync.reload);
+    bsync.watch('build/renderer/**/*').on('change', bsync.reload);
   },
 );
