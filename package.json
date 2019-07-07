@@ -34,6 +34,7 @@
     "babel-eslint": "^10.0.1",
     "browser-sync": "^2.23.6",
     "chai": "^4.1.0",
+    "cross-env": "^5.2.0",
     "electron": "^3.0.0",
     "electron-builder": "^20.0.7",
     "electron-devtools-installer": "^2.2.4",
@@ -48,6 +49,7 @@
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
+    "start": "npm run private:compile -- --source-maps true && cross-env NODE_ENV=development electron ./init.js",
     "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
     "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
     "lint": "eslint --no-ignore scripts app test *.js",
