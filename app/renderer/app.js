@@ -6,6 +6,9 @@ import { createMemoryHistory } from 'history';
 import routes from './routes';
 import configureStore from './store';
 
+import MainMenu from './components/MainMenu';
+
+
 const syncHistoryWithStore = (store, history) => {
   const { router } = store.getState();
   if (router && router.location) {
@@ -18,11 +21,14 @@ const routerHistory = createMemoryHistory();
 const store = configureStore(initialState, routerHistory);
 syncHistoryWithStore(store, routerHistory);
 
+
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={routerHistory}>{routes}</ConnectedRouter>
+    <MainMenu>
+      <ConnectedRouter history={routerHistory}>{routes}</ConnectedRouter>
+    </MainMenu>
   </Provider>,
   rootElement,
 );

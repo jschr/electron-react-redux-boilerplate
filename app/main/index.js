@@ -47,6 +47,7 @@ app.on('ready', async () => {
     show: false,
   });
 
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadFile(path.resolve(path.join(__dirname, '../renderer/index.html')));
 
   // show window once on first load
@@ -82,8 +83,8 @@ app.on('ready', async () => {
   });
 
   if (isDevelopment) {
-    // auto-open dev tools
     mainWindow.webContents.openDevTools();
+    mainWindow.maximize();
 
     // add inspect element on right click menu
     mainWindow.webContents.on('context-menu', (e, props) => {
