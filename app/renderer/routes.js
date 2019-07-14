@@ -1,13 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 
-import Pages from './pages/Pages'
-import Help from './pages/Help';
-import WebApp from './pages/WebApp';
+import Pages from './pages/common/Pages'
+import HelpPage from './pages/HelpPage';
+import JsonPage from './pages/JsonPage';
 
 export default (
   <Switch>
-    <Route exact path={Pages.Help} component={Help} />
-    <Route exact path={Pages.WebApp} component={WebApp} />
+    <Route exact path={Pages.Json} component={JsonPage} />
+    <Route exact path={Pages.Help} component={HelpPage} />
   </Switch>
 );

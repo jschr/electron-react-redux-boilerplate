@@ -11,7 +11,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 
 import useStyles from './useStyles';
-import Pages from '../../pages/Pages';
+import Pages from '../../pages/common/Pages';
 // import { ListItemSecondaryAction, Switch } from '@material-ui/core';
 
 
@@ -33,8 +33,8 @@ const MainMenu = (props) => {
         }}
       >
         <List>
-          <ListItem button onClick={() => goToPage(Pages.WebApp)}>
-            <ListItemText primary="WebApp watchers" />
+          <ListItem button onClick={() => goToPage(Pages.Json)}>
+            <ListItemText primary="JSON watchers" />
           </ListItem>
           <ListItem button onClick={() => goToPage(Pages.Help)}>
             <ListItemText primary="Help" />
