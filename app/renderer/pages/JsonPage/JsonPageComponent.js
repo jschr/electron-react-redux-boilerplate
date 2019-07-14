@@ -1,14 +1,20 @@
+const PageBase = require('Pages/common/PageBase/index.js');
+
+console.log('fuck this shit');
+
 import React from 'react';
-import PageBase from '../common/PageBase';
+// import PageBase from 'Pages/common/PageBase';
 import { Button } from '@material-ui/core';
 
 const JsonPage = ({ handleAddWatcher }) => {
+  console.log('render...');
+
   return (
-    <PageBase>
+    // <PageBase>
       <Button variant='contained' color='primary' onClick={handleAddWatcher}>
         Add watcher
       </Button>
-    </PageBase>
+    // </PageBase>
   );
 };
 

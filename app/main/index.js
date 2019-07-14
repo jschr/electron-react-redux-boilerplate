@@ -1,6 +1,8 @@
 import path from 'path';
 import { app, crashReporter, BrowserWindow, Menu } from 'electron';
 
+require('Pages/index.js');
+
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 let mainWindow = null;

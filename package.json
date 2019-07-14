@@ -7,6 +7,14 @@
     "name": "Jordan Schroter",
     "email": "email@author.com"
   },
+  "_moduleAliases": {
+    "Root": ".",
+    "Actions": "app/renderer/actions",
+    "Components": "app/renderer/components",
+    "Containers": "app/renderer/containers",
+    "Pages": "app/renderer/pages",
+    "Reducers": "app/renderer/reducers"
+  },
   "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
   "license": "MIT",
   "dependencies": {
@@ -15,6 +23,7 @@
     "@material-ui/icons": "^4.2.1",
     "connected-react-router": "^5.0.1",
     "history": "^4.6.3",
+    "module-alias": "2.2.0",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
