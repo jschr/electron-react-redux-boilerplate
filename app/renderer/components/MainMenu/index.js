@@ -1,23 +1,24 @@
 import React from 'react';
 
-
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 import useStyles from './useStyles';
+import Pages from '../../pages/Pages';
+// import { ListItemSecondaryAction, Switch } from '@material-ui/core';
 
 
 const MainMenu = (props) => {
   const classes = useStyles();
+
+  const { goToPage } = props;
 
   return (
     <div className={classes.root}>
@@ -32,22 +33,14 @@ const MainMenu = (props) => {
         }}
       >
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button onClick={() => goToPage(Pages.WebApp)}>
+            <ListItemText primary="WebApp watchers" />
+          </ListItem>
+          <ListItem button onClick={() => goToPage(Pages.Help)}>
+            <ListItemText primary="Help" />
+          </ListItem>
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       {props.children}
     </div>

@@ -52,7 +52,7 @@
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "start": "npm run private:compile -- --source-maps true && cross-env NODE_ENV=development electron ./init.js",
+    "start": "npm run private:clean && npm run private:compile -- --source-maps true && cross-env NODE_ENV=development electron ./init.js",
     "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
     "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
     "lint": "eslint --no-ignore scripts app test *.js",

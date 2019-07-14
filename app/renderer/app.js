@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history';
 import routes from './routes';
 import configureStore from './store';
 
-import MainMenu from './components/MainMenu';
+import MainMenu from './containers/MainMenu';
 
 
 const syncHistoryWithStore = (store, history) => {
@@ -19,6 +19,7 @@ const syncHistoryWithStore = (store, history) => {
 const initialState = {};
 const routerHistory = createMemoryHistory();
 const store = configureStore(initialState, routerHistory);
+
 syncHistoryWithStore(store, routerHistory);
 
 
