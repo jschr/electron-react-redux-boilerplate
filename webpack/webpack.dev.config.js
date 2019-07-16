@@ -50,7 +50,7 @@ module.exports = {
     before() {
       spawn(
         'npx electron',
-        ['../'],
+        ['main.js'],
         { shell: true, env: process.env, stdio: 'inherit' }
       )
       .on('close', code => process.exit(0))
