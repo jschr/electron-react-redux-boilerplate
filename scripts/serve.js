@@ -1,8 +1,7 @@
-import { spawn } from 'child_process';
-import electron from 'electron';
-import browserSync from 'browser-sync';
-import browserSyncConnectUtils from 'browser-sync/dist/connect-utils';
-
+const { spawn } = require('child_process');
+const electron = require('electron');
+const browserSync = require('browser-sync');
+const browserSyncConnectUtils = require('browser-sync/dist/connect-utils');
 const bsync = browserSync.create();
 
 const getRootUrl = (options) => {
@@ -16,7 +15,7 @@ const getClientUrl = (options) => {
 };
 
 function runElectron(browserSyncUrl) {
-  const child = spawn(electron, ['.', '--enable-logging'], {
+  const child = spawn(electron, ['./src/main/index.js', '--enable-logging'], {
     env: {
       ...{
         NODE_ENV: 'development',
@@ -57,14 +56,13 @@ bsync.init(
     const browserSyncUrl = getClientUrl(bs.options);
 
     let child = runElectron(browserSyncUrl);
-
-    bsync.watch('build/main/**/*').on('change', () => {
+    const updateChild = () => { 
       child.removeListener('close', onCloseElectron);
       child.kill();
-
       child = runElectron(browserSyncUrl);
-    });
-
+    };
+    
+    bsync.watch('build/main/**/*').on('change', updateChild);
     bsync.watch('build/renderer/**/*').on('change', bsync.reload);
   },
 );
