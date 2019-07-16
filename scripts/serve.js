@@ -2,7 +2,6 @@ const { spawn } = require('child_process');
 const electron = require('electron');
 const browserSync = require('browser-sync');
 const browserSyncConnectUtils = require('browser-sync/dist/connect-utils');
-
 const bsync = browserSync.create();
 
 const getRootUrl = (options) => {
@@ -57,14 +56,13 @@ bsync.init(
     const browserSyncUrl = getClientUrl(bs.options);
 
     let child = runElectron(browserSyncUrl);
-
-    bsync.watch('build/main/**/*').on('change', () => {
+    const updateChild = () => { 
       child.removeListener('close', onCloseElectron);
       child.kill();
-
       child = runElectron(browserSyncUrl);
-    });
-
+    };
+    
+    bsync.watch('build/main/**/*').on('change', updateChild);
     bsync.watch('build/renderer/**/*').on('change', bsync.reload);
   },
 );

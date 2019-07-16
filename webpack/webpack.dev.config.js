@@ -4,7 +4,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = path.resolve(__dirname, '../src/renderer');
+const defaultInclude = path.resolve(__dirname, '../srс');
 console.log(`default path of include files: ${defaultInclude}`);
 
 module.exports = {

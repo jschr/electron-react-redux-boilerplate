@@ -1,4 +1,5 @@
 const path = require('path');
+const url = require('url');
 const { app, crashReporter, BrowserWindow, Menu } = require('electron');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -35,8 +36,23 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', async () => {
+  let indexPath;
+
   if (isDevelopment) {
     await installExtensions();
+
+    indexPath = url.format({
+      protocol: 'http:',
+      host: 'localhost:8080',
+      pathname: '/renderer/index.html',
+      slashes: true
+    });
+  } else {
+    indexPath = url.format({
+      protocol: 'file:',
+      pathname: path.join(__dirname, '../renderer/index.html'),
+      slashes: true
+    });
   }
 
   mainWindow = new BrowserWindow({
@@ -45,10 +61,13 @@ app.on('ready', async () => {
     minWidth: 640,
     minHeight: 480,
     show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   mainWindow.setMenuBarVisibility(false);
-  mainWindow.loadFile(path.resolve(path.join(__dirname, '../renderer/index.html')));
+  mainWindow.loadURL(indexPath);
 
   // show window once on first load
   mainWindow.webContents.once('did-finish-load', () => {
