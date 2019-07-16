@@ -4,7 +4,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = path.resolve(__dirname, '../src');
+const defaultInclude = path.resolve(__dirname, '../src/renderer');
 console.log(`default path of include files: ${defaultInclude}`);
 
 module.exports = {
@@ -49,15 +49,12 @@ module.exports = {
     },
     before() {
       spawn(
-        'npx electron',
-        ['main.js'],
+        'node',
+        ['./scripts/serve.js'],
         { shell: true, env: process.env, stdio: 'inherit' }
       )
       .on('close', code => process.exit(0))
-      .on('error', spawnError => {
-        console.error('FUCK YOUR MUMMY');
-        console.error(spawnError);
-      })
+      .on('error', spawnError => console.error(spawnError))
     }
   }
 };
