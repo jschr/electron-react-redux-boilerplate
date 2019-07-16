@@ -2,8 +2,6 @@ const path = require('path');
 const url = require('url');
 const { app, crashReporter, BrowserWindow, Menu } = require('electron');
 
-require('Pages/index.js');
-
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 let mainWindow = null;

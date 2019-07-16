@@ -1,4 +1,4 @@
-const PageBase = require('Pages/common/PageBase/index.js');
+const PageBase = require('../common/PageBase');
 
 console.log('fuck this shit');
 
