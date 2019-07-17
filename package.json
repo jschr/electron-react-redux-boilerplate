@@ -13,13 +13,13 @@
     "@babel/register": "7.0.0",
     "@material-ui/core": "4.2.0",
     "@material-ui/icons": "4.2.1",
-    "connected-react-router": "5.0.1",
-    "history": "4.6.3",
-    "prop-types": "15.5.10",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "react-redux": "5.0.2",
-    "react-router": "4.1.2",
+    "connected-react-router": "6.5.2",
+    "history": "4.9.0",
+    "prop-types": "15.7.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "7.1.0",
+    "react-router": "5.0.1",
     "redux": "4.0.0",
     "redux-actions": "2.2.1",
     "redux-localstorage": "0.4.1",
@@ -74,6 +74,6 @@
     "private:serve": "babel-node scripts/serve.js",
     "private:compile": "babel app/ --copy-files --out-dir build",
     "private:clean": "rimraf build",
-    "t::start": "webpack-dev-server --hot --host 0.0.0.0 --config=./dev/webpack.dev.config.js --mode development"
+    "t::start": "webpack-dev-server --config=./dev/webpack.dev.config.js"
   }
 }

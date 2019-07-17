@@ -44,7 +44,7 @@ app.on('ready', async () => {
     indexPath = url.format({
       protocol: 'http:',
       host: 'localhost:8080',
-      pathname: '/renderer/index.html',
+      pathname: '/index.html',
       slashes: true
     });
   } else {

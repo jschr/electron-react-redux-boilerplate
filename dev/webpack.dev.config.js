@@ -3,12 +3,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { spawn } = require('child_process');
 
-// Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = path.resolve(__dirname, '../srс');
-console.log(`default path of include files: ${defaultInclude}`);
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/renderer/index.js'),
+  mode: 'development',
   module: {
     rules: [
       // {
@@ -39,6 +37,8 @@ module.exports = {
   ],
   devtool: 'cheap-source-map',
   devServer: {
+    hot: true,
+    host: 'localhost',
     contentBase: false, // path.resolve(__dirname, '../build'),
     stats: {
       colors: true,
@@ -55,6 +55,3 @@ module.exports = {
     )
   }
 };
-
-console.log(`contentBase: ${path.resolve(__dirname, '../build')}`)
-

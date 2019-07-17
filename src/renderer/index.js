@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -19,11 +20,13 @@ const syncHistoryWithStore = (store, history) => {
 const initialState = {};
 const routerHistory = createMemoryHistory();
 
-
+const store = configureStore(initialState, routerHistory);
 syncHistoryWithStore(store, routerHistory);
 
 
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
+
+debugger;
 
 ReactDOM.render(
   <Provider store={store}>
