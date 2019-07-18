@@ -24,9 +24,8 @@ const store = configureStore(initialState, routerHistory);
 syncHistoryWithStore(store, routerHistory);
 
 
-const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
-
-debugger;
+const rootElement = document.createElement('div');
+document.body.append(rootElement);
 
 ReactDOM.render(
   <Provider store={store}>
