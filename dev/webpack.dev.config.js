@@ -9,11 +9,6 @@ module.exports = {
   mode: 'development',
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'postcss-loader' }],
-      //   include: defaultInclude
-      // },
       {
         test: /\.jsx?$/,
         use: [{ loader: 'babel-loader' }],
@@ -39,7 +34,6 @@ module.exports = {
   devServer: {
     hot: true,
     host: 'localhost',
-    contentBase: false, // path.resolve(__dirname, '../build'),
     stats: {
       colors: true,
       chunks: false,
