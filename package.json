@@ -56,8 +56,7 @@
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "start": "npm run private:clean && npm run private:compile -- --source-maps true && cross-env NODE_ENV=development electron ./init.js",
-    "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
+    "start": "node ./dev/dev.js",
     "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
     "lint": "eslint --no-ignore scripts app test *.js",
     "format": "npm run private:format -- --write",
@@ -70,10 +69,7 @@
     "private:build:mac": "electron-builder --mac",
     "private:build:win": "electron-builder --win",
     "private:build:linux": "electron-builder --linux",
-    "private:watch": "npm run private:compile -- --source-maps true --watch --skip-initial-build",
-    "private:serve": "babel-node scripts/serve.js",
     "private:compile": "babel app/ --copy-files --out-dir build",
-    "private:clean": "rimraf build",
-    "t::start": "webpack-dev-server --config=./dev/webpack.dev.config.js"
+    "private:clean": "rimraf build"
   }
 }

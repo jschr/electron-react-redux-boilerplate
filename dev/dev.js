@@ -12,7 +12,10 @@ const onCloseElectron = () => process.exit();
 const runElectron = () => {
   const instance = spawn(electron, ['./src/main/index.js', '--enable-logging'], {
     env: {
-      ...{ NODE_ENV: 'development' },
+      ...{
+        NODE_ENV: 'development',
+        ELECTRON_DISABLE_SECURITY_WARNINGS: true
+      },
       ...process.env,
     },
     stdio: 'inherit',
