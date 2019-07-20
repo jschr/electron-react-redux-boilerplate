@@ -74,6 +74,22 @@ app.on('ready', async () => {
     mainWindow.show();
   });
 
+  isDevelopment && mainWindow.webContents.once('dom-ready', () => {
+    mainWindow.webContents.openDevTools();
+    mainWindow.maximize();
+    mainWindow.webContents.on('context-menu', (e, props) => {
+      Menu.buildFromTemplate([
+        {
+          label: 'Inspect element',
+          click() {
+            mainWindow.inspectElement(props.x, props.y);
+          },
+        },
+      ]).popup(mainWindow);
+    });
+    console.log('DOM is ready.')
+  });
+
   mainWindow.webContents.on('did-finish-load', () => {
     // Handle window logic properly on macOS:
     // 1. App should not terminate if window has been closed
@@ -100,21 +116,4 @@ app.on('ready', async () => {
       });
     }
   });
-
-  if (isDevelopment) {
-    mainWindow.webContents.openDevTools();
-    mainWindow.maximize();
-
-    // add inspect element on right click menu
-    mainWindow.webContents.on('context-menu', (e, props) => {
-      Menu.buildFromTemplate([
-        {
-          label: 'Inspect element',
-          click() {
-            mainWindow.inspectElement(props.x, props.y);
-          },
-        },
-      ]).popup(mainWindow);
-    });
-  }
 });
