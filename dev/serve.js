@@ -1,27 +1,13 @@
 const { spawn } = require('child_process');
 const electron = require('electron');
-const browserSync = require('browser-sync');
-const browserSyncConnectUtils = require('browser-sync/dist/connect-utils');
-const bsync = browserSync.create();
+const watch = require('node-watch');
 
+const onCloseElectron = () => process.exit();
 
-const getRootUrl = (options) => {
-  const port = options.get('port');
-  return `http://localhost:${port}`;
-};
-
-const getClientUrl = (options) => {
-  const pathname = browserSyncConnectUtils.clientScript(options);
-  return getRootUrl(options) + pathname;
-};
-
-const runElectron = (browserSyncUrl) => {
+const runElectron = () => {
   const child = spawn(electron, ['./src/main/index.js', '--enable-logging'], {
     env: {
-      ...{
-        NODE_ENV: 'development',
-        BROWSER_SYNC_CLIENT_URL: browserSyncUrl,
-      },
+      ...{ NODE_ENV: 'development' },
       ...process.env,
     },
     stdio: 'inherit',
@@ -32,36 +18,16 @@ const runElectron = (browserSyncUrl) => {
   return child;
 };
 
-const onCloseElectron = () => process.exit();
 
-bsync.init(
-  {
-    ui: false,
-    // Port 35829 = LiveReload's default port 35729 + 100.
-    // If the port is occupied, Browsersync uses next free port automatically.
-    port: 35829,
-    ghostMode: false,
-    open: false,
-    notify: false,
-    logSnippet: false,
-    socket: {
-      // Use the actual port here.
-      domain: getRootUrl,
-    },
-  },
-  (err, bs) => {
-    if (err) return console.error(err);
+let child = runElectron();
 
-    const browserSyncUrl = getClientUrl(bs.options);
+const updateChild = () => { 
+  child.removeListener('close', onCloseElectron);
+  child.kill();
+  child = runElectron();
+};
 
-    let child = runElectron(browserSyncUrl);
-    const updateChild = () => { 
-      child.removeListener('close', onCloseElectron);
-      child.kill();
-      child = runElectron(browserSyncUrl);
-    };
-    
-    bsync.watch('src/main/**/*').on('change', updateChild);
-    // bsync.watch('build/renderer/**/*').on('change', bsync.reload);
-  },
-);
+watch('src/main/', { recursive: true, filter: /\.js$/ }, (evt, name) => {
+  console.info(`File was changed: ${name}`);
+  updateChild();
+});

@@ -1,7 +1,5 @@
 const PageBase = require('../common/PageBase');
 
-console.log('fuck this shit');
-
 import React from 'react';
 // import PageBase from 'Pages/common/PageBase';
 import { Button } from '@material-ui/core';
