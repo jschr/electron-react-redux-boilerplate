@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { spawn } = require('child_process');
 
 
 module.exports = {
@@ -30,22 +29,5 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     })
   ],
-  devtool: 'cheap-source-map',
-  devServer: {
-    hot: true,
-    host: 'localhost',
-    stats: {
-      colors: true,
-      chunks: false,
-      children: false
-    },
-    before: () => spawn(
-        'node',
-        ['./dev/serve.js'],
-        { shell: true, env: process.env, stdio: 'inherit' }
-      )
-      .on('close', code => process.exit(0))
-      .on('error', spawnError => console.error(spawnError)
-    )
-  }
+  devtool: 'cheap-source-map'
 };
