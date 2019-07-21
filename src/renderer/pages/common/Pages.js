@@ -1,6 +1,6 @@
 const Pages = {
   Help: '/help',
-  Json: '/'
+  Json: '/',
 };
 
 export default Pages;

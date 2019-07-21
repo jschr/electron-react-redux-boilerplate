@@ -3,7 +3,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier"
+    "plugin:prettier/recommended",
+    "prettier/react"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -12,8 +13,9 @@
       "modules": true
     }
   },
-  "plugins": [ "react" ],
+  "plugins": [ "react", "prettier" ],
   "rules": {
+    "prettier/prettier": "error",
     "prefer-const": "warn",
     "no-console": "off",
     "no-loop-func": "warn",

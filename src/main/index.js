@@ -45,13 +45,13 @@ app.on('ready', async () => {
       protocol: 'http:',
       host: 'localhost:8080',
       pathname: '/index.html',
-      slashes: true
+      slashes: true,
     });
   } else {
     indexPath = url.format({
       protocol: 'file:',
       pathname: path.join(__dirname, '../renderer/index.html'),
-      slashes: true
+      slashes: true,
     });
   }
 
@@ -62,33 +62,32 @@ app.on('ready', async () => {
     minHeight: 480,
     show: false,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   });
 
   mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(indexPath);
 
   // show window once on first load
-  mainWindow.webContents.once('did-finish-load', () => {
-    mainWindow.show();
-  });
+  mainWindow.webContents.once('did-finish-load', () => mainWindow.show());
 
-  isDevelopment && mainWindow.webContents.once('dom-ready', () => {
-    mainWindow.webContents.openDevTools();
-    mainWindow.maximize();
-    mainWindow.webContents.on('context-menu', (e, props) => {
-      Menu.buildFromTemplate([
-        {
-          label: 'Inspect element',
-          click() {
-            mainWindow.inspectElement(props.x, props.y);
+  if (isDevelopment)
+    mainWindow.webContents.once('dom-ready', () => {
+      mainWindow.webContents.openDevTools();
+      mainWindow.maximize();
+      mainWindow.webContents.on('context-menu', (e, props) => {
+        Menu.buildFromTemplate([
+          {
+            label: 'Inspect element',
+            click() {
+              mainWindow.inspectElement(props.x, props.y);
+            },
           },
-        },
-      ]).popup(mainWindow);
+        ]).popup(mainWindow);
+      });
+      console.log('DOM is ready.');
     });
-    console.log('DOM is ready.')
-  });
 
   mainWindow.webContents.on('did-finish-load', () => {
     // Handle window logic properly on macOS:

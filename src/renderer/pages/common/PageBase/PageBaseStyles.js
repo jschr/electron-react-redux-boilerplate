@@ -1,9 +1,9 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@material-ui/styles';
 
-const PageBaseStyles = makeStyles(theme => ({
-    container: {
-        margin: '1.25rem'
-    }
+const PageBaseStyles = makeStyles(() => ({
+  container: {
+    margin: '1.25rem',
+  },
 }));
 
 export default PageBaseStyles;

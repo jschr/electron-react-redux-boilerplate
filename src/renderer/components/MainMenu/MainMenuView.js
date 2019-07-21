@@ -14,7 +14,6 @@ import useStyles from './MainMenuStyles';
 import Pages from '../../pages/common/Pages';
 // import { ListItemSecondaryAction, Switch } from '@material-ui/core';
 
-
 const MainMenu = (props) => {
   const classes = useStyles();
 
@@ -30,8 +29,7 @@ const MainMenu = (props) => {
         open={true}
         classes={{
           paper: classes.drawerPaper,
-        }}
-      >
+        }}>
         <List>
           <ListItem button onClick={() => goToPage(Pages.Json)}>
             <ListItemText primary="JSON watchers" />

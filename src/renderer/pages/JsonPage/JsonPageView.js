@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core';
 const JsonPage = ({ handleAddWatcher }) => {
   return (
     <PageBase>
-      <Button variant='contained' color='primary' onClick={handleAddWatcher}>
+      <Button variant="contained" color="primary" onClick={handleAddWatcher}>
         Add watcher
       </Button>
     </PageBase>

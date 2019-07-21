@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 
-import Pages from 'Pages/common/Pages'
+import Pages from 'Pages/common/Pages';
 import HelpPage from 'Pages/HelpPage';
 import JsonPage from 'Pages/JsonPage';
 

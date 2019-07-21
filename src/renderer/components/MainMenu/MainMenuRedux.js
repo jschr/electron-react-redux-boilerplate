@@ -3,7 +3,6 @@ import { push } from 'connected-react-router';
 
 import MainMenu from './MainMenuView';
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     goToPage: (page) => {

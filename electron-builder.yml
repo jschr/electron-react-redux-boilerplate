@@ -10,7 +10,6 @@ directories:
 
 files:
   - package.json
-  - init.js
   - build/
   - node_modules/
 

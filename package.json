@@ -1,11 +1,11 @@
 {
-  "name": "electron-react-redux-boilerplate",
-  "version": "0.0.0",
+  "name": "electron-rct-rdx-wbpck-boilerplate",
+  "version": "0.1.0-alpha",
   "description": "electron-react-redux-boilerplate",
-  "main": "init.js",
+  "main": "build/main.js",
   "author": {
-    "name": "Jordan Schroter",
-    "email": "email@author.com"
+    "name": "Aleksandr Kondratsky",
+    "email": "akondratsky@yandex.ru"
   },
   "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
   "license": "MIT",
@@ -43,11 +43,13 @@
     "electron-devtools-installer": "2.2.4",
     "electron-mocha": "6.0.1",
     "eslint": "5.1.0",
-    "eslint-config-prettier": "3.1.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.1.0",
     "html-webpack-plugin": "3.2.0",
     "node-watch": "0.6.2",
     "npm-run-all": "4.0.1",
+    "prettier": "1.18.2",
     "redux-mock-store": "1.2.2",
     "rimraf": "2.5.4",
     "webpack": "4.35.3",
@@ -55,12 +57,12 @@
     "webpack-dev-server": "3.7.2"
   },
   "scripts": {
-    "postinstall": "electron-builder install-app-deps",
     "start": "node ./dev/dev.js",
+    "postinstall": "electron-builder install-app-deps",
+    "lint": "eslint --no-ignore src *.js",
+    "format": "npm run lint -- --write",
+    
     "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
-    "lint": "eslint --no-ignore scripts app test *.js",
-    "format": "npm run private:format -- --write",
-    "check-format": "npm run private:format -- --list-different",
     "pack": "run-s private:clean private:compile private:build:all",
     "pack:mac": "run-s private:clean private:compile private:build:mac",
     "pack:win": "run-s private:clean private:compile private:build:win",
@@ -69,7 +71,7 @@
     "private:build:mac": "electron-builder --mac",
     "private:build:win": "electron-builder --win",
     "private:build:linux": "electron-builder --linux",
-    "private:compile": "babel app/ --copy-files --out-dir build",
-    "private:clean": "rimraf build"
+    "private:compile": "webpack --progress --config ./dev/webpack.prod.config.js",
+    "private:clean": "rimraf pre-build"
   }
 }
