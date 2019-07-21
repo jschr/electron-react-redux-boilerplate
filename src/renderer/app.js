@@ -21,8 +21,7 @@ const routerHistory = createMemoryHistory();
 const store = configureStore(initialState, routerHistory);
 syncHistoryWithStore(store, routerHistory);
 
-const rootElement = document.createElement('div');
-document.body.append(rootElement);
+const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>

@@ -14,7 +14,7 @@ const runElectron = () => {
     env: {
       ...{
         NODE_ENV: 'development',
-        ELECTRON_DISABLE_SECURITY_WARNINGS: true
+        ELECTRON_DISABLE_SECURITY_WARNINGS: true,
       },
       ...process.env,
     },
@@ -26,7 +26,7 @@ const runElectron = () => {
   return instance;
 };
 
-const updateChild = () => { 
+const updateChild = () => {
   electronInstance.removeListener('close', onCloseElectron);
   electronInstance.kill();
   electronInstance = runElectron();
@@ -40,7 +40,7 @@ const devServerOptions = Object.assign({}, config.devServer, {
   stats: {
     colors: true,
     chunks: false,
-    children: false
+    children: false,
   },
   after: () => {
     electronInstance = runElectron();
@@ -48,11 +48,11 @@ const devServerOptions = Object.assign({}, config.devServer, {
       console.info(`File was changed: ${name}`);
       updateChild();
     });
-  }
+  },
 });
 
 const server = new WebpackDevServer(compiler, devServerOptions);
 
 server.listen(8080, 'localhost', () => {
-  console.log('Server listened on localhost:8080')
+  console.log('Server listened on localhost:8080');
 });
