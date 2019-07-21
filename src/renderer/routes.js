@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 
-import Pages from './pages/common/Pages'
-import HelpPage from './pages/HelpPage';
-import JsonPage from './pages/JsonPage';
+import Pages from 'Pages/common/Pages'
+import HelpPage from 'Pages/HelpPage';
+import JsonPage from 'Pages/JsonPage';
 
 export default (
   <Switch>

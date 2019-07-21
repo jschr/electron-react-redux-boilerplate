@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,7 +6,7 @@ import { createMemoryHistory } from 'history';
 import routes from './routes';
 import configureStore from './store';
 
-import MainMenu from './containers/MainMenu';
+import MainMenu from 'Components/MainMenu';
 
 
 const syncHistoryWithStore = (store, history) => {

@@ -1,10 +1,7 @@
-import React from 'react';
-import PageBase from '../common/PageBase';
+import HelpPageView from './HelpPageView';
 
-const Help = () => {
-  return (
-    <PageBase>I am help page</PageBase>
-  );
+export {
+  HelpPageView
 };
 
-export default Help;
+export default HelpPageView;

@@ -1,15 +1,9 @@
-import React from 'react';
-import { Container } from '@material-ui/core';
-import useStyles from './useStyles';
+import PageBaseView from './PageBaseView';
+import PageBaseStyles from './PageBaseStyles';
 
-const PageBase = (props) => {
-  const cs = useStyles();
-
-  return (
-    <div className={cs.container}>
-      {props.children}
-    </div>
-  );
+export {
+  PageBaseView,
+  PageBaseStyles
 };
 
-export default PageBase;
+export default PageBaseView;

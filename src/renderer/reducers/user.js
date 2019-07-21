@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import actions from '../actions/user';
+import actions from 'Actions/user';
 
 export default handleActions(
   {
