@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import reducer from '../../app/renderer/reducers/user';
+import reducer from './user';
 
 describe('reducers', () => {
   describe('user', () => {
