@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   entry: {
     renderer: path.resolve(__dirname, '../src/renderer/app.js'),
     main: path.resolve(__dirname, '../src/main/index.js')
@@ -26,6 +30,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: [{ loader: 'babel-loader' }],
+        include: path.resolve(__dirname, '../src/')
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -39,7 +44,10 @@ module.exports = {
   },
   target: 'electron-renderer',
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'dev/index.html',
+      inject: false
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })

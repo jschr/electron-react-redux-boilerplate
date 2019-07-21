@@ -36,25 +36,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', async () => {
-  let indexPath;
-
-  if (isDevelopment) {
-    await installExtensions();
-
-    indexPath = url.format({
-      protocol: 'http:',
-      host: 'localhost:8080',
-      pathname: '/index.html',
-      slashes: true,
-    });
-  } else {
-    indexPath = url.format({
-      protocol: 'file:',
-      pathname: path.join(__dirname, '../renderer/index.html'),
-      slashes: true,
-    });
-  }
-
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
@@ -65,9 +46,21 @@ app.on('ready', async () => {
       nodeIntegration: true,
     },
   });
-
   mainWindow.setMenuBarVisibility(false);
-  mainWindow.loadURL(indexPath);
+
+  if (isDevelopment) {
+    await installExtensions();
+
+    const indexPath = url.format({
+      protocol: 'http:',
+      host: 'localhost:8080',
+      pathname: '/index.html',
+      slashes: true,
+    });
+    mainWindow.loadURL(indexPath);
+  } else {
+    mainWindow.loadFile(path.resolve(path.join(__dirname, 'index.html')));
+  }
 
   // show window once on first load
   mainWindow.webContents.once('did-finish-load', () => mainWindow.show());

@@ -2,7 +2,7 @@
   "name": "electron-rct-rdx-wbpck-boilerplate",
   "version": "0.1.0-alpha",
   "description": "electron-react-redux-boilerplate",
-  "main": "build/main.js",
+  "main": "pre-build/main.js",
   "author": {
     "name": "Aleksandr Kondratsky",
     "email": "akondratsky@yandex.ru"
