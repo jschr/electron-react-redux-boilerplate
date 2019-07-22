@@ -36,5 +36,13 @@
     "es6": true,
     "node": true,
     "mocha": true
-  }
+  },
+  "overrides": [
+    {
+      "files": "*.spec.js",
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 }
