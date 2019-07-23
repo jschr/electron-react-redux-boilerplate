@@ -1,0 +1,14 @@
+exports["<PageBaseView />/should be renderer correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "makeStyles"
+    }
+  },
+  "type": "div",
+  "props": {
+    "className": "makeStyles"
+  }
+};
+

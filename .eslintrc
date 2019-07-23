@@ -42,6 +42,12 @@
       "files": "*.spec.js",
       "rules": {
         "no-unused-expressions": "off"
+      },
+      "globals": {
+        "shallow": true,
+        "mount": true,
+        "render": true,
+        "expect": true
       }
     }
   ]
