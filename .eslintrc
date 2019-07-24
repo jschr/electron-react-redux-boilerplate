@@ -47,7 +47,8 @@
         "shallow": true,
         "mount": true,
         "render": true,
-        "expect": true
+        "expect": true,
+        "mockStore": true
       }
     }
   ]
