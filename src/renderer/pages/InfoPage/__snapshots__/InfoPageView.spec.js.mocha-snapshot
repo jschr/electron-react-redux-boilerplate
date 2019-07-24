@@ -1,0 +1,43 @@
+exports["<InfoPageView />/should be renderer correctly(0)"] = {
+  "node": {
+    "nodeType": "function",
+    "type": "PageBase",
+    "props": {
+      "children": {
+        "type": "h1",
+        "props": {
+          "children": "I am help page"
+        },
+        "_store": {}
+      }
+    },
+    "rendered": {
+      "nodeType": "host",
+      "type": "h1",
+      "props": {
+        "children": "I am help page"
+      },
+      "rendered": "I am help page"
+    }
+  },
+  "type": "PageBase",
+  "props": {},
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "h1",
+        "props": {
+          "children": "I am help page"
+        },
+        "rendered": "I am help page"
+      },
+      "type": "h1",
+      "props": {},
+      "children": [
+        "I am help page"
+      ]
+    }
+  ]
+};
+
