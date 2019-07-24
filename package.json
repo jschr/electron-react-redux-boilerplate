@@ -15,7 +15,6 @@
     "@material-ui/icons": "4.2.1",
     "connected-react-router": "6.5.2",
     "history": "4.9.0",
-    "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-redux": "7.1.0",
@@ -34,12 +33,10 @@
     "@babel/plugin-proposal-decorators": "7.4.4",
     "@babel/preset-env": "7.5.4",
     "@babel/preset-react": "7.0.0",
-    "@storybook/react": "5.1.9",
     "babel-eslint": "10.0.1",
     "babel-loader": "8.0.6",
     "babel-plugin-webpack-alias": "2.1.2",
     "chai": "4.1.0",
-    "cross-env": "5.2.0",
     "electron": "3.0.0",
     "electron-builder": "20.0.7",
     "electron-devtools-installer": "2.2.4",
@@ -51,7 +48,6 @@
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.1.0",
     "html-webpack-plugin": "3.2.0",
-    "mocha-loader": "2.0.1",
     "mocha-snapshots": "4.2.0",
     "node-watch": "0.6.2",
     "npm-run-all": "4.0.1",
@@ -65,13 +61,10 @@
   },
   "scripts": {
     "start": "node ./dev/dev.js",
-    "postinstall": "electron-builder install-app-deps",
+    "test": "mocha  --require @babel/register --require mocha-snapshots --file mocha.config.js \"src/**/*.spec.js\"",
+    "test:update": "mocha  --require @babel/register --require mocha-snapshots --update --file mocha.config.js \"src/**/*.spec.js\"",
     "lint": "eslint --no-ignore src *.js",
     "format": "npm run lint -- --write",
-    "t:test": "mochapack --webpack-config dev/webpack.test.config.js \"src/**/*.spec.js\"",
-    "t:mocha": "mocha  --require @babel/register --require mocha-snapshots --file mocha.config.js \"src/**/*.spec.js\"",
-    "t:mocha:update": "mocha  --require @babel/register --require mocha-snapshots --update --file mocha.config.js \"src/**/*.spec.js\"",
-    "test": "electron-mocha --renderer -R spec --require @babel/register src/**/*.spec.js",
     "pack": "run-s private:clean private:compile private:build:all",
     "pack:mac": "run-s private:clean private:compile private:build:mac",
     "pack:win": "run-s private:clean private:compile private:build:win",
@@ -81,6 +74,7 @@
     "private:build:win": "electron-builder --win",
     "private:build:linux": "electron-builder --linux",
     "private:compile": "webpack --progress --config ./dev/webpack.prod.config.js",
-    "private:clean": "rimraf pre-build"
+    "private:clean": "rimraf pre-build",
+    "postinstall": "electron-builder install-app-deps"
   }
 }
