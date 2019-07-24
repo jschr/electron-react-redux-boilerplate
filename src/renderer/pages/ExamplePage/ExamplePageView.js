@@ -2,7 +2,7 @@ import React from 'react';
 import PageBase from 'Pages/common/PageBase';
 import { Button } from '@material-ui/core';
 
-const JsonPage = ({ handleAddWatcher }) => {
+const ExamplePageView = ({ handleAddWatcher }) => {
   return (
     <PageBase>
       <Button variant="contained" color="primary" onClick={handleAddWatcher}>
@@ -12,4 +12,4 @@ const JsonPage = ({ handleAddWatcher }) => {
   );
 };
 
-export default JsonPage;
+export default ExamplePageView;
