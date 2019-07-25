@@ -1,4 +1,4 @@
-import InfoPageView from './InfoPageView';
+import InfoPageView from './InfoPageView.js';
 
 export { InfoPageView };
 
