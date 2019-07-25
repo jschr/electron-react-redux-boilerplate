@@ -8,7 +8,7 @@ describe('reducers/user', () => {
         id: 42,
       },
     };
-    const test = Object.assign({}, action.payload);
+    const test = { [action.payload.id]: 1 };
     expect(reducer({}, action)).to.deep.equal(test);
   });
 });

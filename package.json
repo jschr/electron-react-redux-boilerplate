@@ -23,6 +23,7 @@
     "redux-actions": "2.2.1",
     "redux-localstorage": "0.4.1",
     "redux-thunk": "2.2.0",
+    "reselect": "4.0.0",
     "typeface-roboto": "0.0.54"
   },
   "devDependencies": {

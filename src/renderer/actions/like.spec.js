@@ -1,22 +1,18 @@
 import actions from './like';
 
-describe('actions/like', () => {
+describe('Actions / like', () => {
   it('should give like', () => {
     const store = mockStore({});
     const expectedActions = [
       {
         type: 'LIKE_IT',
         payload: {
-          id: 42,
+          id: 'some_id',
         },
       },
     ];
 
-    store.dispatch(
-      actions.likeIt({
-        id: 42,
-      }),
-    );
+    store.dispatch(actions.likeIt('some_id'));
 
     expect(store.getActions()).deep.equal(expectedActions);
   });

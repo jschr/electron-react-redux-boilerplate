@@ -2,12 +2,13 @@ import React from 'react';
 import PageBase from 'Pages/common/PageBase';
 import { Button } from '@material-ui/core';
 
-const ExamplePageView = ({ handleAddWatcher }) => {
+const ExamplePageView = ({ likeIt, likes }) => {
   return (
     <PageBase>
-      <Button variant="contained" color="primary" onClick={handleAddWatcher}>
-        Add watcher
+      <Button variant="contained" color="primary" onClick={likeIt}>
+        Like it!
       </Button>
+      <div>Number of likes: {likes}</div>
     </PageBase>
   );
 };
