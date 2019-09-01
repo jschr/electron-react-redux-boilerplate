@@ -24,9 +24,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
@@ -41,30 +39,24 @@
     "eslint": "^5.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.1.0",
-    "npm-run-all": "^4.0.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-inject-string": "^1.1.2",
+    "gulp-sourcemaps": "^2.6.5",
     "prettier": "^1.13.7",
     "redux-mock-store": "^1.2.2",
-    "rimraf": "^2.5.4"
+    "rimraf": "^3.0.0"
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
+    "develop": "gulp develop",
     "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
-    "lint": "eslint --no-ignore scripts app test *.js",
+    "lint": "eslint --no-ignore tasks app test *.js",
     "format": "npm run private:format -- --write",
     "check-format": "npm run private:format -- --list-different",
-    "pack": "run-s private:clean private:compile private:build:all",
-    "pack:mac": "run-s private:clean private:compile private:build:mac",
-    "pack:win": "run-s private:clean private:compile private:build:win",
-    "pack:linux": "run-s private:clean private:compile private:build:linux",
-    "private:build:all": "electron-builder -mwl",
-    "private:build:mac": "electron-builder --mac",
-    "private:build:win": "electron-builder --win",
-    "private:build:linux": "electron-builder --linux",
-    "private:watch": "npm run private:compile -- --source-maps true --watch --skip-initial-build",
-    "private:serve": "babel-node scripts/serve.js",
-    "private:compile": "babel app/ --copy-files --out-dir build",
-    "private:clean": "rimraf build",
-    "private:format": "prettier \"babel.config.js\" \"scripts/*.js\" \"app/**/*.js\" \"test/**/*.js\""
+    "pack:mac": "gulp pack-mac",
+    "pack:win": "gulp pack-win",
+    "pack:linux": "gulp pack-linux",
+    "private:format": "prettier gulpfile.js babel.config.js \"tasks/*.js\" \"app/**/*.js\" \"test/**/*.js\""
   }
 }

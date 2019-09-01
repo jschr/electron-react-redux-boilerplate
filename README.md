@@ -38,7 +38,7 @@ npm run develop
 
 Toggle DevTools:
 
-* OSX: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
+* macOS: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 * Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 * Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 
@@ -48,12 +48,8 @@ Modify [electron-builder.yml](./electron-builder.yml) to edit package info.
 
 For a full list of options see: https://github.com/electron-userland/electron-builder/wiki/Options.
 
-Create a package for OSX, Windows and Linux
-```
-npm run pack
-```
+Create a package for macOS, Windows or Linux using one of the following commands:
 
-Or target a specific platform
 ```
 npm run pack:mac
 npm run pack:win
