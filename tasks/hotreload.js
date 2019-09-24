@@ -23,7 +23,9 @@ function startBrowserSync(done) {
 function injectBrowserSync() {
   return src('app/renderer/index.html')
     .pipe(inject.before('</body>', browserSync.getOption('snippet')))
-    .pipe(inject.after('script-src', ' ' + browserSync.getOption('urls').get('local')))
+    .pipe(
+      inject.after('script-src', " 'unsafe-eval' " + browserSync.getOption('urls').get('local')),
+    )
     .pipe(dest('build/renderer'));
 }
 
