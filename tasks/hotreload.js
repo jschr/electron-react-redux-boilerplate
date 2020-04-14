@@ -14,7 +14,7 @@ function startBrowserSync(done) {
       notify: false,
       logSnippet: false,
     },
-    function(error) {
+    function (error) {
       done(error);
     },
   );

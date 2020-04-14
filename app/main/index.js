@@ -63,7 +63,7 @@ app.on('ready', async () => {
     // 2. Click on icon in dock should re-open the window
     // 3. ⌘+Q should close the window and quit the app
     if (process.platform === 'darwin') {
-      mainWindow.on('close', function(e) {
+      mainWindow.on('close', function (e) {
         if (!forceQuit) {
           e.preventDefault();
           mainWindow.hide();
