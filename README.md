@@ -46,7 +46,7 @@ Toggle DevTools:
 
 Modify [electron-builder.yml](./electron-builder.yml) to edit package info.
 
-For a full list of options see: https://github.com/electron-userland/electron-builder/wiki/Options.
+For a full list of options see: https://www.electron.build/configuration/configuration
 
 Create a package for macOS, Windows or Linux using one of the following commands:
 
